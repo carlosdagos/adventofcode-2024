@@ -22,7 +22,7 @@ pub fn main() !void {
 
     var buf: [1024]u8 = undefined;
     while (try in_stream.readUntilDelimiterOrEof(&buf, '\n')) |line| {
-        var tokenizer = std.mem.tokenize(u8, line, " ");
+        var tokenizer = std.mem.tokenizeScalar(u8, line, ' ');
 
         const first_number_str = tokenizer.next() orelse {
             std.debug.print("Failed to parse first number\n", .{});
